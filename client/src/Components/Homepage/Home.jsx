@@ -16,6 +16,16 @@ const Home = () => {
         alt=""
         style={{ width: "100%" }}
       />
+      <img
+        src="https://wallpapercave.com/wp/wp10835280.jpg"
+        alt=""
+        style={{ width: "100%" }}
+      />
+      <img
+        src="https://wallpapercave.com/wp/wp10835280.jpg"
+        alt=""
+        style={{ width: "100%" }}
+      />
     </div>
   );
 };

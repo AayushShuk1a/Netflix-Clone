@@ -25,11 +25,36 @@
     img {
       height: 50px;
       margin-right: 20px;
+
+      @media screen and (max-width: 916px) {
+        height: 40px;
+      }
     }
 
     span {
       margin-right: 20px;
       cursor: pointer;
+    }
+
+    .profile {
+      .options {
+        background-color: var(--main-color);
+
+        border-radius: 5px;
+        display: none;
+
+        span {
+          padding: 10px;
+        }
+      }
+
+      &:hover {
+        .options {
+          display: flex;
+          flex-direction: column;
+          position: absolute;
+        }
+      }
     }
   }
 
@@ -70,5 +95,9 @@
         }
       }
     }
+  }
+
+  @media screen and (max-width: 916px) {
+    font-size: 10px;
   }
 }

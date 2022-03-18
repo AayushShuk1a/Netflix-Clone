@@ -4,6 +4,7 @@ import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 
 const NavBar = () => {
   const [isScrolled, setisScrolled] = useState(false);
+  const [onPhone, setonPhone] = useState(false);
 
   window.onscroll = () => {
     setisScrolled(window.pageYOffset === 0 ? false : true);
@@ -23,6 +24,16 @@ const NavBar = () => {
           <span>Movies</span>
           <span>New & Popular</span>
           <span>My List</span>
+          {
+            <div className="profile">
+              <span>Browse</span>
+              <ArrowDropDown className="icon" />
+              <div className="options">
+                <span>Settings</span>
+                <span>Logout</span>
+              </div>
+            </div>
+          }
         </div>
         <div className="right">
           <Search className="icon" />
