@@ -1,15 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./navbar.scss";
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
+import { useWindowSize } from "./windowsize";
 
 const NavBar = () => {
   const [isScrolled, setisScrolled] = useState(false);
-  const [onPhone, setonPhone] = useState(false);
+  const [OnPhone, setOnPhone] = useState();
 
   window.onscroll = () => {
     setisScrolled(window.pageYOffset === 0 ? false : true);
     return () => window.onscroll === null;
   };
+
+  const value = useWindowSize();
+  const width = value[0];
+  console.log(width);
+
+  useEffect(() => {
+    const condition = width >= 1020 ? true : false;
+    setOnPhone(condition);
+  }, [width]);
+
+  console.log(OnPhone);
 
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
@@ -19,21 +31,29 @@ const NavBar = () => {
             src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
             alt="Logo"
           />
-          <span>Home</span>
-          <span>Tv Show</span>
-          <span>Movies</span>
-          <span>New & Popular</span>
-          <span>My List</span>
-          {
+
+          {OnPhone && (
+            <div>
+              <span>Home</span>
+              <span>Tv Show</span>
+              <span>Movies</span>
+              <span>New & Popular</span>
+              <span>My List</span>
+            </div>
+          )}
+
+          {!OnPhone && (
             <div className="profile">
-              <span>Browse</span>
-              <ArrowDropDown className="icon" />
+              Browse <ArrowDropDown className="icon" />
               <div className="options">
-                <span>Settings</span>
-                <span>Logout</span>
+                <span>Home</span>
+                <span>Tv Show</span>
+                <span>Movies</span>
+                <span>New & Popular</span>
+                <span>My List</span>
               </div>
             </div>
-          }
+          )}
         </div>
         <div className="right">
           <Search className="icon" />
