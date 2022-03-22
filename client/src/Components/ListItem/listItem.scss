@@ -53,6 +53,31 @@
           margin-right: 10px;
         }
       }
+
+      .ItemInfoTop {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 16px;
+        font-weight: 600;
+        color: gray;
+
+        .limit {
+          border: 1px solid gray;
+          padding: 1px 3px;
+          margin: 0 10px;
+        }
+      }
+
+      .description {
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+
+      .genre {
+        font-size: 14px;
+        color: lightgray;
+      }
     }
   }
 }

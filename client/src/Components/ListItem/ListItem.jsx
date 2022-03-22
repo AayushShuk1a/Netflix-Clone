@@ -44,8 +44,7 @@ const ListItem = ({ index }) => {
             </div>
             <div className="description">
               Walter White, a chemistry teacher, discovers that he has cancer
-              and decides to get into the meth-making business to repay his
-              medical debts.
+              and decides to get into the meth-making.
             </div>
 
             <div className="genre">Crime Drama</div>
