@@ -14,14 +14,11 @@ const NavBar = () => {
 
   const value = useWindowSize();
   const width = value[0];
-  console.log(width);
 
   useEffect(() => {
     const condition = width >= 1020 ? true : false;
     setOnPhone(condition);
   }, [width]);
-
-  console.log(OnPhone);
 
   return (
     <div className={isScrolled ? "navbar scrolled" : "navbar"}>
