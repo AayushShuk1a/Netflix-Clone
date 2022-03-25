@@ -5,11 +5,14 @@ const Register = () => {
   return (
     <div className="register">
       <div className="top">
-        <img
-          src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
-          alt="Logo"
-        />
-        <button className="loginButton">Sign In</button>
+        <div className="wrapper">
+          <img
+            className="Logo"
+            src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
+            alt="Logo"
+          />
+          <button className="loginButton">Sign In</button>
+        </div>
       </div>
       <div className="container">
         <h1>Unlimited movies, TV shows, and more.</h1>

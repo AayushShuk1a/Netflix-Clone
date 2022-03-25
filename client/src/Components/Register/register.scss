@@ -1,0 +1,125 @@
+.register {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 1) 100%
+    ),
+    url("https://cdn.hipwallpaper.com/i/98/21/dUyCkp.jpg");
+  position: relative;
+  background-size: cover;
+
+  .top {
+    .wrapper {
+      padding: 20px 50px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+
+      .Logo {
+        height: 40px;
+      }
+      .loginButton {
+        background-color: red;
+        color: white;
+        border-radius: 5px;
+        padding: 5px 15px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        border: none;
+      }
+    }
+  }
+
+  .container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+
+    h1 {
+      font-size: 50px;
+    }
+    h2 {
+      margin: 20px;
+    }
+    p {
+      font-size: 20px;
+    }
+    .input {
+      width: 50%;
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background-color: white;
+      height: 50px;
+      border-radius: 5px;
+
+      @media screen and (max-width: 950px) {
+        width: 40%;
+        button {
+          font-size: 16px;
+        }
+      }
+
+      input {
+        flex: 9;
+        height: 100%;
+        border: none;
+        padding: 0 10px;
+      }
+      button {
+        flex: 3;
+        height: 100%;
+        border: none;
+        background-color: red;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      @media screen and (max-width: 950px) {
+        width: 40%;
+        button {
+          font-size: 16px;
+        }
+      }
+    }
+    @media screen and (max-width: 950px) {
+      h1 {
+        font-size: 30px;
+      }
+      h2 {
+        font-size: 20px;
+      }
+
+      p {
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (max-width: 530px) {
+      h1 {
+        font-size: 20px;
+      }
+      h2 {
+        font-size: 16px;
+      }
+
+      p {
+        font-size: 14px;
+        text-align: center;
+      }
+    }
+  }
+}
