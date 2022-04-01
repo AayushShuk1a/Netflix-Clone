@@ -1,5 +1,8 @@
 import User from "../Schema/user.js";
 import CryptoJS from "crypto-js";
+import jwt from "jsonwebtoken";
+
+const { sign, verify } = jwt;
 
 export const RegisterPerson = async (req, res) => {
   const newUser = new User({
@@ -16,5 +19,39 @@ export const RegisterPerson = async (req, res) => {
     res.status(200).json(newUser);
   } catch (error) {
     res.status(500).json(error);
+  }
+};
+
+//Login
+
+export const LoginPerson = async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.body.email });
+
+    if (!user) {
+      res.status(401).json("Wrong Password or Username");
+      return;
+    }
+
+    const bytes = CryptoJS.AES.decrypt(user.password, process.env.SECRET_KEY);
+    const decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
+
+    if (decryptedData !== req.body.password) {
+      res.status(401).json("Wrong Password or Username");
+      return;
+    }
+
+    const accessToken = sign(
+      { id: user._id, isAdmin: user.isAdmin },
+      process.env.SECRET_KEY,
+      { expiresIn: "5d" }
+    );
+
+    const { password1, ...info } = user._doc;
+
+    res.status(200).json({ ...info, accessToken });
+    return;
+  } catch (errpr) {
+    res.status(500).json(errpr);
   }
 };
