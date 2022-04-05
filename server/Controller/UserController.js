@@ -4,6 +4,7 @@ import jwt from "jsonwebtoken";
 
 const { sign } = jwt;
 
+//Register Person
 export const RegisterPerson = async (req, res) => {
   const newUser = new User({
     username: req.body.username,
@@ -12,6 +13,7 @@ export const RegisterPerson = async (req, res) => {
       JSON.stringify(req.body.password),
       process.env.SECRET_KEY
     ).toString(),
+    isAdmin: req.body.isAdmin,
   });
 
   try {
@@ -92,5 +94,33 @@ export const DeleteUser = async (req, res) => {
     }
   } else {
     res.status(403).json("You can only delete Your account");
+  }
+};
+
+//Get single User
+export const SingleUser = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    const { password, ...info } = user;
+    res.status(200).json(info);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
+//Get All User
+
+export const AllUsers = async (req, res) => {
+  const query = req.query.new;
+  if (req.user.isAdmin) {
+    try {
+      const users = query ? await User.find().limit(query) : await User.find();
+
+      res.status(200).json(users);
+    } catch (err) {
+      res.status(400).json(err);
+    }
+  } else {
+    res.status(500).json("Forbidden");
   }
 };

@@ -4,6 +4,8 @@ import {
   LoginPerson,
   UpdateUser,
   DeleteUser,
+  SingleUser,
+  AllUsers,
 } from "../Controller/UserController.js";
 import { verifyToken } from "../VerifyToken.js";
 
@@ -17,6 +19,11 @@ Router.post("/api/auth/login", LoginPerson);
 //User Update
 Router.put("/api/users/:id", verifyToken, UpdateUser);
 
+//User Delete
 Router.delete("/api/users/:id", verifyToken, DeleteUser);
+
+//get User
+Router.get("/api/users/:id", SingleUser);
+Router.get("/api/users", verifyToken, AllUsers);
 
 export default Router;
