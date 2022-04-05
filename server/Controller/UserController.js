@@ -58,10 +58,6 @@ export const LoginPerson = async (req, res) => {
 
 //Update
 export const UpdateUser = async (req, res) => {
-  console.log(req.params.id);
-  console.log(req.user.id);
-
-  console.log(req.params.id === req.user.id);
   if (req.user.id === req.params.id || req.user.isAdmin) {
     if (req.body.password) {
       req.body.password = CryptoJS.AES.encrypt(
@@ -81,5 +77,20 @@ export const UpdateUser = async (req, res) => {
     }
   } else {
     res.status(403).json("You can update only your account!");
+  }
+};
+
+//Delete
+
+export const DeleteUser = async (req, res) => {
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    try {
+      await User.findByIdAndDelete(req.params.id);
+      res.status(200).json("User Deleted");
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(403).json("You can only delete Your account");
   }
 };
