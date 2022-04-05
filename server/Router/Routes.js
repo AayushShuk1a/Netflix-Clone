@@ -6,6 +6,7 @@ import {
   DeleteUser,
   SingleUser,
   AllUsers,
+  UserStats,
 } from "../Controller/UserController.js";
 import { verifyToken } from "../VerifyToken.js";
 
@@ -25,5 +26,8 @@ Router.delete("/api/users/:id", verifyToken, DeleteUser);
 //get User
 Router.get("/api/users/:id", SingleUser);
 Router.get("/api/users", verifyToken, AllUsers);
+
+//User Stats
+Router.get("/api/stats", UserStats);
 
 export default Router;
