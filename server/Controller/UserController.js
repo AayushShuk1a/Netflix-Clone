@@ -2,7 +2,7 @@ import User from "../Schema/user.js";
 import CryptoJS from "crypto-js";
 import jwt from "jsonwebtoken";
 
-const { sign, verify } = jwt;
+const { sign } = jwt;
 
 export const RegisterPerson = async (req, res) => {
   const newUser = new User({
@@ -53,5 +53,33 @@ export const LoginPerson = async (req, res) => {
     return;
   } catch (errpr) {
     res.status(500).json(errpr);
+  }
+};
+
+//Update
+export const UpdateUser = async (req, res) => {
+  console.log(req.params.id);
+  console.log(req.user.id);
+
+  console.log(req.params.id === req.user.id);
+  if (req.user.id === req.params.id || req.user.isAdmin) {
+    if (req.body.password) {
+      req.body.password = CryptoJS.AES.encrypt(
+        JSON.stringify(req.body.password),
+        process.env.SECRET_KEY
+      ).toString();
+    }
+    try {
+      const data = await User.findByIdAndUpdate(
+        req.params.id,
+        { $set: req.body },
+        { new: true }
+      );
+      res.status(200).json(data);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res.status(403).json("You can update only your account!");
   }
 };
