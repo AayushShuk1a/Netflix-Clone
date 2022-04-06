@@ -5,14 +5,23 @@ import {
   AddMovie,
   UpdateMovie,
   DeleteMovie,
+  SingleMovie,
+  RandomMovie,
+  AllMovies,
 } from "../Controller/MovieController.js";
 
 const Router = express.Router();
 
 Router.post("/", verifyToken, AddMovie);
 
-Router.put("/:id", UpdateMovie);
+Router.put("/:id", verifyToken, UpdateMovie);
 
-Router.delete("/:id", DeleteMovie);
+Router.delete("/:id", verifyToken, DeleteMovie);
+
+Router.get("/find/:id", verifyToken, SingleMovie);
+
+Router.get("/random", verifyToken, RandomMovie);
+
+Router.get("/", verifyToken, AllMovies);
 
 export default Router;
