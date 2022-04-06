@@ -7,7 +7,7 @@ const Featured = ({ type }) => {
     <div className="featured">
       {type && (
         <div className="category">
-          <span>{type === "movie" ? "Movies" : "Series"}</span>
+          <span>{type === "movies" ? "Movies" : "Series"}</span>
           <select name="genre" id="genre">
             <option>Genre</option>
             <option value="adventure">Adventure</option>
@@ -29,7 +29,10 @@ const Featured = ({ type }) => {
       <img src="https://images.alphacoders.com/118/1189343.jpg" alt="banner" />
 
       <div className="container">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/c/cf/The_Last_Kingdom_logo.png"></img>
+        <img
+          src="https://upload.wikimedia.org/wikipedia/commons/c/cf/The_Last_Kingdom_logo.png"
+          alt="Logo"
+        ></img>
         <span className="description">
           During their invasion of England, the Danes capture Uhtred, a young
           successor of Saxon earldom, and raise him as their own. Years later,

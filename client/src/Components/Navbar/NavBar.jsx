@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./navbar.scss";
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import { useWindowSize } from "./windowsize";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isScrolled, setisScrolled] = useState(false);
@@ -31,9 +32,18 @@ const NavBar = () => {
 
           {OnPhone && (
             <div>
-              <span>Home</span>
-              <span>Tv Show</span>
-              <span>Movies</span>
+              <Link to="/" className="link">
+                <span>Home</span>
+              </Link>
+
+              <Link to="/series" className="link">
+                <span>Tv Show</span>
+              </Link>
+
+              <Link to="/movies" className="link">
+                <span>Movies</span>
+              </Link>
+
               <span>New & Popular</span>
               <span>My List</span>
             </div>
