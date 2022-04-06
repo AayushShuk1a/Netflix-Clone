@@ -7,7 +7,7 @@ import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 
 const App = () => {
-  const user = false;
+  const user = true;
   return (
     <Routes>
       <Route

@@ -4,10 +4,13 @@ import connection from "./database/db.js";
 import Router from "./Router/UserRoutes.js";
 import MovieRoute from "./Router/MovieRoutes.js";
 import ListRoute from "./Router/ListRoute.js";
+import cors from "cors";
+import BodyParser from "body-parser";
 
 dotenv.config();
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
