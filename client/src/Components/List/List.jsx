@@ -10,6 +10,7 @@ const List = ({ list }) => {
   const linkref = useRef();
   const [ArrowSlide, setArrowSlide] = useState(0);
   const [IsMoved, setIsMoved] = useState(false);
+  const [clickLimit, setClickLimit] = useState(window.innerWidth / 230);
 
   const HandleClick = (direction) => {
     setIsMoved(true);
@@ -18,7 +19,7 @@ const List = ({ list }) => {
       setArrowSlide(ArrowSlide - 1);
       linkref.current.style.transform = `translateX(${230 + distance}px)`;
     }
-    if (direction === "right" && ArrowSlide < 5) {
+    if (direction === "right" && ArrowSlide < 10 - clickLimit) {
       setArrowSlide(ArrowSlide + 1);
       linkref.current.style.transform = `translateX(${-230 + distance}px)`;
     }

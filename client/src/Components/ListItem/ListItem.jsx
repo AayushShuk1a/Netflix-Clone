@@ -7,6 +7,7 @@ import {
   ThumbDownOutlined,
 } from "@material-ui/icons";
 import { getMovie } from "../API/API";
+import { Link } from "react-router-dom";
 
 const ListItem = ({ index, item }) => {
   const [IsHovered, setIsHovered] = useState(false);
@@ -22,41 +23,43 @@ const ListItem = ({ index, item }) => {
   }, [item]);
 
   return (
-    <div
-      className="listitem"
-      onMouseEnter={() => {
-        setIsHovered(true);
-      }}
-      onMouseLeave={() => {
-        setIsHovered(false);
-      }}
-      style={{ left: IsHovered && index * 225 - 50 + index * 2.5 }}
-    >
-      <img src={Movie.img} alt="" />
+    <Link to="/watch" state={{ movie: Movie }}>
+      <div
+        className="listitem"
+        onMouseEnter={() => {
+          setIsHovered(true);
+        }}
+        onMouseLeave={() => {
+          setIsHovered(false);
+        }}
+        style={{ left: IsHovered && index * 225 - 50 + index * 2.5 }}
+      >
+        <img src={Movie.img} alt="" />
 
-      {IsHovered && (
-        <>
-          <video src={Movie.trailer} autoPlay={true} loop></video>
+        {IsHovered && (
+          <>
+            <video src={Movie.trailer} autoPlay={true} loop></video>
 
-          <div className="ItemInfo">
-            <div className="Icons">
-              <PlayArrow className="icon" />
-              <Add className="icon" />
-              <ThumbUpAltOutlined className="icon" />
-              <ThumbDownOutlined className="icon" />
+            <div className="ItemInfo">
+              <div className="Icons">
+                <PlayArrow className="icon" />
+                <Add className="icon" />
+                <ThumbUpAltOutlined className="icon" />
+                <ThumbDownOutlined className="icon" />
+              </div>
+              <div className="ItemInfoTop">
+                <span>1hr 30min</span>
+                <span className="limit">{`${Movie.limit}+`}</span>
+                <span>{Movie.year}</span>
+              </div>
+              <div className="description">{Movie.desc}</div>
+
+              <div className="genre">{Movie.genre}</div>
             </div>
-            <div className="ItemInfoTop">
-              <span>1hr 30min</span>
-              <span className="limit">{`${Movie.limit}+`}</span>
-              <span>{Movie.year}</span>
-            </div>
-            <div className="description">{Movie.desc}</div>
-
-            <div className="genre">{Movie.genre}</div>
-          </div>
-        </>
-      )}
-    </div>
+          </>
+        )}
+      </div>
+    </Link>
   );
 };
 
