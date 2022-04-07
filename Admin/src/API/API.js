@@ -14,3 +14,14 @@ export const GetStats = async () => {
     console.log(err);
   }
 };
+
+export const GetNewUsers = async () => {
+  try {
+    const res = await axios.get(`${url}api/users?new=5`, {
+      headers: { token: token },
+    });
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
