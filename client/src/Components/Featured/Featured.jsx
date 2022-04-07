@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./featured.scss";
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
+import { RandomContent } from "../API/API";
 
 const Featured = ({ type }) => {
+  const [Content, setContent] = useState({});
+
+  useEffect(() => {
+    const randomContent = async () => {
+      const random = await RandomContent(type);
+      setContent(random);
+    };
+
+    randomContent();
+  }, [type]);
+
+  console.log(Content);
   return (
     <div className="featured">
       {type && (
@@ -26,18 +39,11 @@ const Featured = ({ type }) => {
           </select>
         </div>
       )}
-      <img src="https://images.alphacoders.com/118/1189343.jpg" alt="banner" />
+      <img src={Content.img} alt="banner" />
 
       <div className="container">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/c/cf/The_Last_Kingdom_logo.png"
-          alt="Logo"
-        ></img>
-        <span className="description">
-          During their invasion of England, the Danes capture Uhtred, a young
-          successor of Saxon earldom, and raise him as their own. Years later,
-          Uhtred's loyalties are put to the test by the Danes.
-        </span>
+        <img src={Content.imgTitle} alt="Logo"></img>
+        <span className="description">{Content.desc}</span>
         <div className="buttons">
           <button className="play">
             <PlayArrow />

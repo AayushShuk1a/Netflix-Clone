@@ -36,3 +36,17 @@ export const getMovie = async (id) => {
     console.log(err);
   }
 };
+
+//Get Random Movie/Series
+export const RandomContent = async (type) => {
+  try {
+    const res = await axios.get(`${url}api/movie/random?type=${type}`, {
+      headers: {
+        token: token,
+      },
+    });
+    return res.data[0];
+  } catch (err) {
+    console.log(err);
+  }
+};
