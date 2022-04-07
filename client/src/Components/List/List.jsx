@@ -36,7 +36,7 @@ const List = ({ list }) => {
         )}
         <div className="container" ref={linkref}>
           {list.content.map((item, i) => (
-            <ListItem key={i} index={i} />
+            <ListItem key={i} index={i} item={item} />
           ))}
         </div>
         <ArrowForwardIosOutlined

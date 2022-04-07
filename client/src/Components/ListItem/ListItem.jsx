@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./listItem.scss";
 import {
   PlayArrow,
@@ -6,12 +6,20 @@ import {
   ThumbUpAltOutlined,
   ThumbDownOutlined,
 } from "@material-ui/icons";
+import { getMovie } from "../API/API";
 
-const ListItem = ({ index }) => {
+const ListItem = ({ index, item }) => {
   const [IsHovered, setIsHovered] = useState(false);
+  const [Movie, setMovie] = useState({});
 
-  const trailer =
-    "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761";
+  useEffect(() => {
+    const getmovie = async () => {
+      const movie = await getMovie(item);
+
+      setMovie(movie);
+    };
+    getmovie();
+  }, [item]);
 
   return (
     <div
@@ -24,11 +32,11 @@ const ListItem = ({ index }) => {
       }}
       style={{ left: IsHovered && index * 225 - 50 + index * 2.5 }}
     >
-      <img src="https://wallpapercave.com/wp/wp3963420.jpg" alt="" />
+      <img src={Movie.img} alt="" />
 
       {IsHovered && (
         <>
-          <video src={trailer} autoPlay={true} loop></video>
+          <video src={Movie.trailer} autoPlay={true} loop></video>
 
           <div className="ItemInfo">
             <div className="Icons">
@@ -38,16 +46,13 @@ const ListItem = ({ index }) => {
               <ThumbDownOutlined className="icon" />
             </div>
             <div className="ItemInfoTop">
-              <span>5 Season</span>
-              <span className="limit">18+</span>
-              <span>2008</span>
+              <span>1hr 30min</span>
+              <span className="limit">{`${Movie.limit}+`}</span>
+              <span>{Movie.year}</span>
             </div>
-            <div className="description">
-              Walter White, a chemistry teacher, discovers that he has cancer
-              and decides to get into the meth-making.
-            </div>
+            <div className="description">{Movie.desc}</div>
 
-            <div className="genre">Crime Drama</div>
+            <div className="genre">{Movie.genre}</div>
           </div>
         </>
       )}
