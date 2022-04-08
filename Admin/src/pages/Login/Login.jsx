@@ -1,14 +1,17 @@
 import React, { useContext, useState } from "react";
-
+import { login } from "../../Context/AuthContext/APICalls.js";
 import { AuthContext } from "../../Context/AuthContext/AuthContext";
 import "./Login.css";
 
 export default function Login() {
-  const setEmail = () => {};
-  const setPassword = () => {};
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const { isfetching, dispatch } = useContext(AuthContext);
 
-  const handleLogin = () => {};
-  const isFetching = () => {};
+  const handleLogin = (e) => {
+    e.preventDefault();
+    login({ email, password }, dispatch);
+  };
 
   return (
     <div className="login">
@@ -28,7 +31,7 @@ export default function Login() {
         <button
           className="loginButton"
           onClick={handleLogin}
-          disabled={isFetching}
+          disabled={isfetching}
         >
           Login
         </button>
