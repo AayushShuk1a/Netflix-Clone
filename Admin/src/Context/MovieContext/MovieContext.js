@@ -8,8 +8,6 @@ export const MovieContext = createContext(INITIAL_STATE);
 export const MovieContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(MovieReducers, INITIAL_STATE);
 
-  console.log("Hello");
-  console.log(state.isfetching);
   return (
     <MovieContext.Provider
       value={{

@@ -13,9 +13,14 @@ export default function ProductList() {
   const handleDelete = (id) => {
     DeleteMovie(id, dispatch);
   };
+  console.log(movies);
 
   useEffect(() => {
-    getMovies(dispatch);
+    const getmovie = async () => {
+      await getMovies(dispatch);
+    };
+
+    getmovie();
   }, [dispatch]);
 
   const columns = [
@@ -46,7 +51,10 @@ export default function ProductList() {
         return (
           <>
             <Link
-              to={{ pathname: "/movie/" + params.row._id, movie: params.row }}
+              to={{
+                pathname: "/product/" + params.row._id,
+                Movie: params.row,
+              }}
             >
               <button className="productListEdit">Edit</button>
             </Link>
@@ -69,6 +77,8 @@ export default function ProductList() {
         pageSize={8}
         checkboxSelection
         getRowId={(r) => r._id}
+        autoPageSize={true}
+        autoHeight={true}
       />
     </div>
   );

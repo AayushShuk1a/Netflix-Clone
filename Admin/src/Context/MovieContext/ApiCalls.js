@@ -9,6 +9,7 @@ import {
 } from "./MovieActions";
 const url = "http://localhost:8800/";
 const token = "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken;
+
 export const getMovies = async (dispatch) => {
   dispatch(GetMoviesStart());
   try {

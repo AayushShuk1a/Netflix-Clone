@@ -25,3 +25,16 @@ export const GetNewUsers = async () => {
     console.log(err);
   }
 };
+
+export const getMovie = async (id) => {
+  try {
+    const res = await axios.get(`${url}api/movie/find/${id}`, {
+      headers: {
+        token: token,
+      },
+    });
+    return res.data;
+  } catch (err) {
+    console.log(err);
+  }
+};
