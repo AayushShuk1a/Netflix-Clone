@@ -9,8 +9,18 @@ const MovieReducers = (state, action) => {
     case "GET_MOVIE_FAILURE":
       return { movies: [], isfetching: false, error: true };
 
-    case "DELETE_MOVIE_START":
+    case "CREATE_MOVIE_START":
       return { ...state, isfetching: true, error: false };
+
+    case "CREATE_MOVIE_SUCCESS":
+      return {
+        movies: [...state.movies, action.payload],
+        isfetching: false,
+        error: false,
+      };
+
+    case "CREATE_MOVIE_FAILURE":
+      return { ...state, isfetching: false, error: true };
 
     case "DELETE_MOVIE_SUCCESS":
       return {

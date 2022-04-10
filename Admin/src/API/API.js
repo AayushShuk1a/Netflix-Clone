@@ -38,3 +38,13 @@ export const getMovie = async (id) => {
     console.log(err);
   }
 };
+
+export const UpdateMovie = async (movie) => {
+  try {
+    const res = axios.put(`${url}api/movie/${movie._id}`, movie, {
+      headers: { token: token },
+    });
+  } catch (err) {
+    console.log(err);
+  }
+};
