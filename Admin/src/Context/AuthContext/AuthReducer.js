@@ -9,6 +9,9 @@ const AuthReducers = (state, action) => {
     case "FAILURE":
       return { user: null, isfetching: false, error: true };
 
+    case "LOGOUT":
+      return { user: null, isfetching: false, error: false };
+
     default:
       return { ...state };
   }

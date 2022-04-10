@@ -4,9 +4,13 @@ import "./home.css";
 
 import WidgetSm from "../../components/widgetSm/WidgetSm";
 import WidgetLg from "../../components/widgetLg/WidgetLg";
-import { useEffect, useMemo, useState } from "react";
+import { useContext, useEffect, useMemo, useState } from "react";
 
 import { GetStats } from "../../API/API.js";
+import { Button } from "@material-ui/core";
+import { AuthContext } from "../../Context/AuthContext/AuthContext";
+import { Logout } from "../../Context/AuthContext/AuthActions";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
   const MONTHS = useMemo(
@@ -28,6 +32,15 @@ export default function Home() {
   );
 
   const [userStats, setUserStats] = useState([]);
+
+  const navigate = useHistory();
+
+  const { dispatch } = useContext(AuthContext);
+
+  const logoutHandler = () => {
+    dispatch(Logout());
+    navigate.push("/login");
+  };
 
   useEffect(() => {
     const getStats = async () => {
@@ -53,6 +66,7 @@ export default function Home() {
     <div className="home">
       <FeaturedInfo />
       <Chart data={userStats} title="User Analytics" grid dataKey="New User" />
+      <Button onClick={logoutHandler}>Logout</Button>
       <div className="homeWidgets">
         <WidgetSm />
         <WidgetLg />
