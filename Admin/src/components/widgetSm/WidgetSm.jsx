@@ -8,9 +8,14 @@ export default function WidgetSm() {
   const [newUsers, setNewUsers] = useState([]);
 
   useEffect(() => {
-    const res = GetNewUsers();
-    setNewUsers(res);
+    const getnewuser = async () => {
+      const res = await GetNewUsers();
+      setNewUsers(res);
+    };
+    getnewuser();
   }, []);
+
+  console.log(newUsers);
 
   return (
     <div className="widgetSm">
