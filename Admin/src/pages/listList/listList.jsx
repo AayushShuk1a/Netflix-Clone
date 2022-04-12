@@ -34,12 +34,14 @@ export default function ListList() {
       headerName: "Action",
       width: 150,
       renderCell: (params) => {
+        let listsss = params.row;
+
         return (
           <>
             <Link
               to={{
                 pathname: "/list/" + params.row._id,
-                Movie: params.row,
+                state: { list: listsss },
               }}
             >
               <button className="productListEdit">Edit</button>
@@ -57,6 +59,7 @@ export default function ListList() {
   return (
     <div className="productList">
       <DataGrid
+        className="grid"
         rows={lists}
         disableSelectionOnClick
         columns={columns}
