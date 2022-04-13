@@ -15,7 +15,6 @@ const Featured = ({ type }) => {
     randomContent();
   }, [type]);
 
-  console.log(Content);
   return (
     <div className="featured">
       {type && (

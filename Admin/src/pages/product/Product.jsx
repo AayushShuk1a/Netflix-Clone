@@ -86,6 +86,15 @@ export default function Product() {
               placeholder={movie.year}
               onChange={handleChange}
             />
+
+            <label>duration</label>
+            <input
+              name="duration"
+              type="text"
+              placeholder={movie.duration}
+              onChange={handleChange}
+            />
+
             <label>Genre</label>
             <input
               type="text"

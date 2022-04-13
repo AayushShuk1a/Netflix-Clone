@@ -7,6 +7,8 @@ const WatchPage = () => {
   const location = useLocation();
 
   const movie = location.state.movie;
+  console.log(movie);
+
   return (
     <div className="watch">
       <Link to={"/"}>

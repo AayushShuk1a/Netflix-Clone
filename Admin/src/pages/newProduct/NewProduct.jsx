@@ -24,11 +24,11 @@ export default function NewProduct() {
     CreateMovie(movie, dispatch);
   };
 
-  console.log(movie);
-
   const upload = (items) => {
+    console.log(items);
     items.forEach((item) => {
-      const filename = new Date().getTime() + item.label + item.file.name;
+      console.log(item.file);
+      const filename = new Date().getTime() + item.label + movie.title;
       const uploadTask = storage.ref(`/items/${filename}`).put(item.file);
       uploadTask.on(
         "state_changed",
@@ -59,7 +59,6 @@ export default function NewProduct() {
       { file: imgTitle, label: "imgTitle" },
       { file: imgSm, label: "imgSm" },
       { file: trailer, label: "trailer" },
-      { file: video, label: "video" },
     ]);
   };
 
@@ -163,15 +162,15 @@ export default function NewProduct() {
             onChange={(e) => setTrailer(e.target.files[0])}
           />
         </div>
-        <div className="addProductItem">
+        {/* <div className="addProductItem">
           <label>Video</label>
           <input
             type="file"
             name="video"
             onChange={(e) => setVideo(e.target.files[0])}
           />
-        </div>
-        {uploaded === 5 ? (
+        </div> */}
+        {uploaded === 4 ? (
           <button className="addProductButton" onClick={handleSubmit}>
             Create
           </button>

@@ -34,7 +34,7 @@ const ListItem = ({ index, item }) => {
         }}
         style={{ left: IsHovered && index * 225 - 50 + index * 2.5 }}
       >
-        <img src={Movie.img} alt="" />
+        <img src={Movie.imgSm} alt="" />
 
         {IsHovered && (
           <>
@@ -48,7 +48,7 @@ const ListItem = ({ index, item }) => {
                 <ThumbDownOutlined className="icon" />
               </div>
               <div className="ItemInfoTop">
-                <span>1hr 30min</span>
+                <span>{Movie.duration}</span>
                 <span className="limit">{`${Movie.limit}+`}</span>
                 <span>{Movie.year}</span>
               </div>
