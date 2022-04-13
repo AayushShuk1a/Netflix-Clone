@@ -24,9 +24,10 @@ const List = ({ list }) => {
       linkref.current.style.transform = `translateX(${-230 + distance}px)`;
     }
   };
+  console.log(list);
 
   return (
-    <div className="list">
+    <div className="list" style={{ marginBottom: "20px" }}>
       <span className="ListTitle">{list.title}</span>
       <div className="wrapper">
         {IsMoved && (
