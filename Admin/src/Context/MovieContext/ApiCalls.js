@@ -11,14 +11,13 @@ import {
   GetMovieSuccess,
 } from "./MovieActions";
 const url = "http://localhost:8800/";
-const token = "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken;
 
 export const getMovies = async (dispatch) => {
   dispatch(GetMoviesStart());
   try {
     const res = await axios.get(`${url}api/movie`, {
       headers: {
-        token: token,
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
 
@@ -31,7 +30,11 @@ export const getMovies = async (dispatch) => {
 export const DeleteMovie = async (id, dispatch) => {
   dispatch(DeleteMoviesStart());
   try {
-    await axios.delete(`${url}api/movie/${id}`, { headers: { token: token } });
+    await axios.delete(`${url}api/movie/${id}`, {
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
+    });
     dispatch(DeleteMovieSuccess(id));
   } catch (err) {
     dispatch(DeleteMovieFailure());
@@ -42,7 +45,9 @@ export const CreateMovie = async (movie, dispatch) => {
   dispatch(CreateMoviesStart());
   try {
     const res = await axios.post(`${url}api/movie`, movie, {
-      headers: { token: token },
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
     });
     dispatch(CreateMovieSuccess(res.data));
   } catch (err) {

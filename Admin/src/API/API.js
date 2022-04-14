@@ -1,12 +1,13 @@
 import axios from "axios";
 
 const url = "http://localhost:8800/";
-const token = "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken;
 
 export const GetStats = async () => {
   try {
     const res = await axios.get(`${url}api/stats`, {
-      headers: { token: token },
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
     });
     return res.data;
   } catch (err) {
@@ -17,7 +18,9 @@ export const GetStats = async () => {
 export const GetNewUsers = async () => {
   try {
     const res = await axios.get(`${url}api/users?new=5`, {
-      headers: { token: token },
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
     });
     return res.data;
   } catch (err) {
@@ -29,7 +32,7 @@ export const getMovie = async (id) => {
   try {
     const res = await axios.get(`${url}api/movie/find/${id}`, {
       headers: {
-        token: token,
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
     return res.data;
@@ -41,7 +44,9 @@ export const getMovie = async (id) => {
 export const UpdateMovie = async (movie) => {
   try {
     const res = axios.put(`${url}api/movie/${movie._id}`, movie, {
-      headers: { token: token },
+      headers: {
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+      },
     });
   } catch (err) {
     console.log(err);
