@@ -19,10 +19,12 @@ const Home = ({ type }) => {
     randList();
   }, [type, genre]);
 
+  console.log(genre);
+
   return (
     <div className="home">
       <NavBar></NavBar>
-      <Featured type={type} />
+      <Featured type={type} setgenre={setgenre} />
 
       {Lists.map((list, i) => (
         <List list={list} key={i}></List>
