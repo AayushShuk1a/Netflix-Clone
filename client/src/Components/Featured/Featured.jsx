@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "./featured.scss";
 import { InfoOutlined, PlayArrow } from "@material-ui/icons";
 import { RandomContent } from "../API/API";
@@ -14,6 +15,8 @@ const Featured = ({ type, setgenre }) => {
 
     randomContent();
   }, [type]);
+
+  console.log(Content);
 
   return (
     <div className="featured">
@@ -48,10 +51,12 @@ const Featured = ({ type, setgenre }) => {
         <img src={Content.imgTitle} alt="Logo"></img>
         <span className="description">{Content.desc}</span>
         <div className="buttons">
-          <button className="play">
-            <PlayArrow />
-            <span>Play</span>
-          </button>
+          <Link to="/watch" state={{ movie: Content }} className="link">
+            <button className="play">
+              <PlayArrow />
+              <span>Play</span>
+            </button>
+          </Link>
           <button className="info">
             <InfoOutlined />
             <span>Info</span>
