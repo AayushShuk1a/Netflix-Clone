@@ -1,7 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { login } from "../AuthContext/APICalls";
+import { AuthContext } from "../AuthContext/AuthContext";
 import "./login.scss";
+import { useState } from "react";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const { dispatch } = useContext(AuthContext);
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    const user = { email, password };
+    login(user, dispatch);
+  };
+
   return (
     <div className="login">
       <div className="top">
@@ -16,9 +30,19 @@ const Login = () => {
       <div className="container">
         <form>
           <h1>Sign In</h1>
-          <input type="email" placeholder="Email or phone number" />
-          <input type="password" placeholder="Password" />
-          <button className="loginButton">Sign In</button>
+          <input
+            type="email"
+            placeholder="Email or phone number"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button className="loginButton" onClick={handleLogin}>
+            Sign In
+          </button>
           <span>
             New to Netflix? <b>Sign up now.</b>
           </span>
