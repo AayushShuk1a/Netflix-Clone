@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./app.scss";
 import Home from "./Components/Homepage/Home";
 import { Routes, Route, Navigate } from "react-router-dom";
 import WatchPage from "./Components/Watch-Page/WatchPage";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
+import { AuthContext } from "./Components/AuthContext/AuthContext";
 
 const App = () => {
-  const user = true;
+  const { user } = useContext(AuthContext);
   return (
     <Routes>
       <Route

@@ -19,8 +19,6 @@ const Home = ({ type }) => {
     randList();
   }, [type, genre]);
 
-  console.log(genre);
-
   return (
     <div className="home">
       <NavBar></NavBar>

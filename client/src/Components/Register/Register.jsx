@@ -1,11 +1,15 @@
-import React, { useRef, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RegisterPerson } from "../API/API";
 import "./register.scss";
 
 const Register = () => {
   const [Email, setEmail] = useState("");
   const [Password, setPassword] = useState("");
+  const [Username, setUsername] = useState("");
   const eref = useRef();
-  const pref = useRef();
+  const navigate = useNavigate();
 
   const HandleStart = () => {
     setEmail(eref.current.value);
@@ -13,8 +17,11 @@ const Register = () => {
 
   console.log(Email);
 
-  const HandleFinish = () => {
-    setPassword(pref.current.value);
+  const HandleFinish = (e) => {
+    e.preventDefault();
+
+    RegisterPerson({ Username, Password, Email });
+    navigate("/login");
   };
 
   console.log(Password);
@@ -52,10 +59,18 @@ const Register = () => {
         ) : (
           <div className="input">
             <input
+              type="username"
+              name="username"
+              placeholder="username"
+              value={Username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <input
               type="password"
               name="password"
               placeholder="password"
-              ref={pref}
+              onChange={(e) => setPassword(e.target.value)}
+              value={Password}
             />
             <button className="RegisterButton" onClick={HandleFinish}>
               Start

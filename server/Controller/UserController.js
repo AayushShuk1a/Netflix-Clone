@@ -6,11 +6,12 @@ const { sign } = jwt;
 
 //Register Person
 export const RegisterPerson = async (req, res) => {
+  console.log(req.body);
   const newUser = new User({
-    username: req.body.username,
-    email: req.body.email,
+    username: req.body.Username,
+    email: req.body.Email,
     password: CryptoJS.AES.encrypt(
-      JSON.stringify(req.body.password),
+      JSON.stringify(req.body.Password),
       process.env.SECRET_KEY
     ).toString(),
     isAdmin: req.body.isAdmin,

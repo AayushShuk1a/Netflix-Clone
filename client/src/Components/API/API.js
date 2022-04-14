@@ -50,3 +50,14 @@ export const RandomContent = async (type) => {
     console.log(err);
   }
 };
+
+//RegisterPerson
+
+export const RegisterPerson = async (user) => {
+  try {
+    const person = await axios.post(`${url}api/auth/register`, user);
+    console.log(person);
+  } catch (err) {
+    console.log(err);
+  }
+};
