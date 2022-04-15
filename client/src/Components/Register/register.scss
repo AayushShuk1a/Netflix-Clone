@@ -16,19 +16,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      cursor: pointer;
 
       .Logo {
         height: 40px;
       }
       .loginButton {
+        cursor: pointer;
         background-color: red;
         color: white;
         border-radius: 5px;
         padding: 5px 15px;
         font-size: 16px;
         font-weight: 500;
-        cursor: pointer;
+        z-index: 999;
+
         border: none;
       }
     }

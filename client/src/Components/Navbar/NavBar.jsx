@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./navbar.scss";
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import { useWindowSize } from "./windowsize";
 import { Link } from "react-router-dom";
+import { Logout } from "../AuthContext/AuthActions.js";
+import { AuthContext } from "../AuthContext/AuthContext";
 
 const NavBar = () => {
   const [isScrolled, setisScrolled] = useState(false);
   const [OnPhone, setOnPhone] = useState();
+
+  const { dispatch } = useContext(AuthContext);
 
   window.onscroll = () => {
     setisScrolled(window.pageYOffset === 0 ? false : true);
@@ -15,6 +19,11 @@ const NavBar = () => {
 
   const value = useWindowSize();
   const width = value[0];
+
+  const handleLogout = () => {
+    console.log("Clicked");
+    dispatch(Logout());
+  };
 
   useEffect(() => {
     const condition = width >= 1020 ? true : false;
@@ -73,7 +82,7 @@ const NavBar = () => {
             <ArrowDropDown className="icon" />
             <div className="options">
               <span>Settings</span>
-              <span>Logout</span>
+              <span onClick={handleLogout}>Logout</span>
             </div>
           </div>
         </div>

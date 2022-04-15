@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RegisterPerson } from "../API/API";
 import "./register.scss";
 
@@ -15,8 +15,6 @@ const Register = () => {
     setEmail(eref.current.value);
   };
 
-  console.log(Email);
-
   const HandleFinish = (e) => {
     e.preventDefault();
 
@@ -24,7 +22,9 @@ const Register = () => {
     navigate("/login");
   };
 
-  console.log(Password);
+  const handleSingin = () => {
+    navigate("/login");
+  };
 
   return (
     <div className="register">
@@ -35,7 +35,10 @@ const Register = () => {
             src="https://www.freepnglogos.com/uploads/netflix-logo-0.png"
             alt="Logo"
           />
-          <button className="loginButton">Sign In</button>
+
+          <button className="loginButton" onClick={handleSingin}>
+            Sign In
+          </button>
         </div>
       </div>
       <div className="container">

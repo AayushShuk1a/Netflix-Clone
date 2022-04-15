@@ -12,7 +12,7 @@ export const AuthContext = createContext(inititialstate);
 
 export const AuthContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(AuthReducers, inititialstate);
-  console.log(state.user);
+
   useEffect(() => {
     localStorage.setItem("user", JSON.stringify(state.user));
   }, [state.user]);
