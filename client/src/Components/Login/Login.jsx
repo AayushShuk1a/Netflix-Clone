@@ -3,6 +3,7 @@ import { login } from "../AuthContext/APICalls";
 import { AuthContext } from "../AuthContext/AuthContext";
 import "./login.scss";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -31,6 +32,7 @@ const Login = () => {
         <form>
           <h1>Sign In</h1>
           <input
+            name="email"
             type="email"
             placeholder="Email or phone number"
             onChange={(e) => setEmail(e.target.value)}
@@ -44,7 +46,10 @@ const Login = () => {
             Sign In
           </button>
           <span>
-            New to Netflix? <b>Sign up now.</b>
+            New to Netflix?{" "}
+            <Link to="/register" className="link">
+              <b>Sign up now.</b>
+            </Link>
           </span>
           <small>
             This page is protected by Google reCAPTCHA to ensure you're not a
