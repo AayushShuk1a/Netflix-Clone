@@ -24,7 +24,6 @@ const List = ({ list }) => {
       linkref.current.style.transform = `translateX(${-230 + distance}px)`;
     }
   };
-  console.log(list);
 
   return (
     <div className="list" style={{ marginBottom: "20px" }}>

@@ -6,6 +6,7 @@ import WatchPage from "./Components/Watch-Page/WatchPage";
 import Register from "./Components/Register/Register";
 import Login from "./Components/Login/Login";
 import { AuthContext } from "./Components/AuthContext/AuthContext";
+import Myfile from "./Components/Myfile/myfile";
 
 const App = () => {
   const { user } = useContext(AuthContext);
@@ -33,6 +34,7 @@ const App = () => {
           <Route exact path="/movies" element={<Home type="movie" />}></Route>
           <Route exact path="/series" element={<Home type="series" />}></Route>
           <Route exact path="/watch" element={<WatchPage />} />
+          <Route exact path="/mylist" element={<Myfile />}></Route>
         </>
       )}
     </Routes>
