@@ -35,24 +35,21 @@ export const GetList = async (req, res) => {
   const typeQuery = req.query.type;
   const genreQuery = req.query.genre;
   let list;
-  if (req.user.isAdmin) {
-    if (typeQuery) {
-      if (genreQuery) {
-        list = await List.aggregate([
-          { $sample: { size: 10 } },
-          { $match: { type: typeQuery, genre: genreQuery } },
-        ]);
-      } else {
-        list = await List.aggregate([
-          { $sample: { size: 10 } },
-          { $match: { type: typeQuery } },
-        ]);
-      }
+
+  if (typeQuery) {
+    if (genreQuery) {
+      list = await List.aggregate([
+        { $sample: { size: 10 } },
+        { $match: { type: typeQuery, genre: genreQuery } },
+      ]);
     } else {
-      list = await List.aggregate([{ $sample: { size: 10 } }]);
+      list = await List.aggregate([
+        { $sample: { size: 10 } },
+        { $match: { type: typeQuery } },
+      ]);
     }
-    res.status(200).json(list);
   } else {
-    res.status(400).json("Only admin Allowed");
+    list = await List.aggregate([{ $sample: { size: 10 } }]);
   }
+  res.status(200).json(list);
 };
