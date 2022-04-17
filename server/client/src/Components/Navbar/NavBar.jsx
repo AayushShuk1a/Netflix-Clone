@@ -2,13 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import "./navbar.scss";
 import { ArrowDropDown, Notifications, Search } from "@material-ui/icons";
 import { useWindowSize } from "./windowsize";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Logout } from "../AuthContext/AuthActions.js";
 import { AuthContext } from "../AuthContext/AuthContext";
 
 const NavBar = () => {
   const [isScrolled, setisScrolled] = useState(false);
   const [OnPhone, setOnPhone] = useState();
+  const navigate = useNavigate();
 
   const { dispatch } = useContext(AuthContext);
 
@@ -23,6 +24,7 @@ const NavBar = () => {
   const handleLogout = () => {
     console.log("Clicked");
     dispatch(Logout());
+    navigate("/login");
   };
 
   useEffect(() => {

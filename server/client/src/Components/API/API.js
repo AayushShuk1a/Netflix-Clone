@@ -1,19 +1,19 @@
 import axios from "axios";
 const url = "https://netflix-c1one.herokuapp.com/";
-const token =
-  "bearerBearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNTAwYjNkMjYwYTRkNTM4YzI4ZDcxNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTc5MjA4MSwiZXhwIjoxNjUwMjI0MDgxfQ.7PrgCO6mikutpHzMAMhkHteXLTtc0DegGgaZum8n5mA";
 
 //Random List
 
 export const RandomList = async (type, genre) => {
   try {
+    console.log(type);
     const res = await axios.get(
       `${url}api/list${type ? "?type=" + type : ""}${
         genre ? "&genre=" + genre : ""
       }`,
       {
         headers: {
-          token: token,
+          token:
+            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
         },
       }
     );
@@ -28,7 +28,7 @@ export const getMovie = async (id) => {
   try {
     const res = await axios.get(`${url}api/movie/find/${id}`, {
       headers: {
-        token: token,
+        token: "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
       },
     });
     return res.data;
@@ -40,11 +40,15 @@ export const getMovie = async (id) => {
 //Get Random Movie/Series
 export const RandomContent = async (type) => {
   try {
-    const res = await axios.get(`${url}api/movie/random?type=${type}`, {
-      headers: {
-        token: token,
-      },
-    });
+    const res = await axios.get(
+      `${url}api/movie/random?type=${type ? "?type=" + type : ""}`,
+      {
+        headers: {
+          token:
+            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+        },
+      }
+    );
     return res.data[0];
   } catch (err) {
     console.log(err);
