@@ -11,7 +11,7 @@ import {
   GetListsSuccess,
 } from "./ListActions";
 
-const url = "http://localhost:8800/";
+const url = "https://netflix-c1one.herokuapp.com/";
 
 export const getLists = async (dispatch) => {
   dispatch(GetListsStart());

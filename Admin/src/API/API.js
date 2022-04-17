@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://localhost:8800/";
+const url = "https://netflix-c1one.herokuapp.com/";
 
 export const GetStats = async () => {
   try {

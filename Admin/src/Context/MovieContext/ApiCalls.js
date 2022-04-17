@@ -10,7 +10,7 @@ import {
   GetMoviesStart,
   GetMovieSuccess,
 } from "./MovieActions";
-const url = "http://localhost:8800/";
+const url = "https://netflix-c1one.herokuapp.com/";
 
 export const getMovies = async (dispatch) => {
   dispatch(GetMoviesStart());

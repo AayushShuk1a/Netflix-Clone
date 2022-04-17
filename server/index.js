@@ -6,6 +6,7 @@ import MovieRoute from "./Router/MovieRoutes.js";
 import ListRoute from "./Router/ListRoute.js";
 import cors from "cors";
 import BodyParser from "body-parser";
+import path from "path";
 
 dotenv.config();
 
@@ -14,11 +15,21 @@ app.use(cors());
 
 app.use(express.json());
 
+const __dirname = path.resolve();
+
+const PORT = process.env.PORT || 8800;
+
 app.use("/", Router);
 app.use("/api/movie", MovieRoute);
 app.use("/api/list", ListRoute);
 
-app.listen("8800", () => {
+app.use(express.static(path.join(__dirname, "/client/build")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
+});
+
+app.listen(PORT, () => {
   console.log("Server is Running");
 });
 

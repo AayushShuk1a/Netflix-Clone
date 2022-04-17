@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "http://localhost:8800/";
+const url = "https://netflix-c1one.herokuapp.com/";
 const token =
   "bearerBearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNTAwYjNkMjYwYTRkNTM4YzI4ZDcxNCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0OTc5MjA4MSwiZXhwIjoxNjUwMjI0MDgxfQ.7PrgCO6mikutpHzMAMhkHteXLTtc0DegGgaZum8n5mA";
 
