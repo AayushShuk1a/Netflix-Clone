@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://netflix-clone-api-five.vercel.app/";
+const url = "https://netflix-clone-api-iota.vercel.app/";
 
 //Random List
 
