@@ -20,19 +20,11 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-const __dirname = path.resolve();
-
 const PORT = process.env.PORT || 8800;
 
 app.use("/", Router);
 app.use("/api/movie", MovieRoute);
 app.use("/api/list", ListRoute);
-
-app.use(express.static(path.join(__dirname, "/client/build")));
-
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "/client/build", "index.html"));
-});
 
 app.listen(PORT, () => {
   console.log("Server is Running");
