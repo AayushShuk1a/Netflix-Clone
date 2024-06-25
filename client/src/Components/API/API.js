@@ -1,5 +1,5 @@
 import axios from "axios";
-const url = "https://netflix-c1one.herokuapp.com/";
+const url = "http://localhost:8800/";
 
 //Random List
 

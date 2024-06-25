@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Failure, loginStart, loginSuccess } from "./AuthActions";
 
-const url = "https://netflix-c1one.herokuapp.com/";
+const url = "http://localhost:8800/";
 
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
