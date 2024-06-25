@@ -12,7 +12,7 @@ dotenv.config();
 
 const app = express();
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: 'https://netflix-clone-client-three.vercel.app',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 };
