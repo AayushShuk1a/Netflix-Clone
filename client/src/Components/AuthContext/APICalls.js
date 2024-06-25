@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Failure, loginStart, loginSuccess } from "./AuthActions";
 
-const url = "http://localhost:8800/";
+const url = "http://netflix-clone-api-five.vercel.app/";
 
 export const login = async (user, dispatch) => {
   dispatch(loginStart());
